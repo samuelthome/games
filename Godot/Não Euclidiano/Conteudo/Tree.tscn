@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://OBJ/Tree.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Imagens/OBJTextures/DB2X2_L01.png" type="Texture" id=2]
+[ext_resource path="res://Imagens/NormalMaps/DB2X2_L01_Spec.png" type="Texture" id=3]
+[ext_resource path="res://Imagens/OBJTextures/bark_0021.jpg" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0.941176, 0.823529, 1 )
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0.00784314, 1, 0, 1 )
+albedo_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 3 )
+
+[sub_resource type="CylinderShape" id=3]
+
+[node name="Tree" type="Spatial"]
+
+[node name="Tree" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.09, 0, 0, 0, 1, 0, 0, 0, 0.09, 0, 1, 0 )
+shape = SubResource( 3 )

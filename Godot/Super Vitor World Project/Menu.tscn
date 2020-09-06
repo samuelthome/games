@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fontes/comic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fundo.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func _on_Start_pressed():
+	get_tree().change_scene(\"res://World.tscn\")
+
+func _on_Quit_pressed():
+	get_tree().quit()
+
+func _physics_process(delta):
+	
+	if Input.is_action_pressed(\"ui_accept\"):
+		get_tree().change_scene(\"res://World.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 304.0
+margin_top = 205.0
+margin_right = 719.0
+margin_bottom = 394.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 415.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 2 )
+text = "Super Vitor World"
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 415.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 3 )
+text = "Novo jogo"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 415.0
+margin_bottom = 189.0
+custom_fonts/font = SubResource( 4 )
+text = "Sair"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

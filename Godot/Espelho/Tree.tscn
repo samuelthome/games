@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Tree.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://DB2X2_L01_Spec.png" type="Texture" id=2]
+[ext_resource path="res://bark_0021.jpg" type="Texture" id=3]
+[ext_resource path="res://DB2X2_L01.png" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_texture = ExtResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+
+[node name="Tree" type="MeshInstance"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -8, 0, 4 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )

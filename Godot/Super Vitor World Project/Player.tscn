@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Run0.png" type="Texture" id=2]
+[ext_resource path="res://Player/Run7.png" type="Texture" id=3]
+[ext_resource path="res://Player/Jump3.png" type="Texture" id=4]
+[ext_resource path="res://Player/Run4.png" type="Texture" id=5]
+[ext_resource path="res://Player/Jump0.png" type="Texture" id=6]
+[ext_resource path="res://Player/Idle0.png" type="Texture" id=7]
+[ext_resource path="res://Player/Run2.png" type="Texture" id=8]
+[ext_resource path="res://Player/Run1.png" type="Texture" id=9]
+[ext_resource path="res://Player/Run3.png" type="Texture" id=10]
+[ext_resource path="res://Player/Jump4.png" type="Texture" id=11]
+[ext_resource path="res://Player/Jump1.png" type="Texture" id=12]
+[ext_resource path="res://Som/Jump.ogg" type="AudioStream" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 8.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 13.652
+height = 28.728
+
+[sub_resource type="Animation" id=3]
+resource_name = "Damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 128.498, 128.498, 128.498, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "morreu"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8.22296, 1.46078 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 0.15976
+height = 22.7469
+
+[sub_resource type="Theme" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.615686, 0.0862745, 0.0862745, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 354.473, 184.141 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -0.125 )
+frames = SubResource( 1 )
+animation = "Idle"
+playing = true
+
+[node name="colisao_corpo" type="CollisionShape2D" parent="."]
+position = Vector2( 1.06842, 3.74352 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 3 )
+
+[node name="pes" type="Area2D" parent="."]
+position = Vector2( 1.42905, 31.2099 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="colisao_pe" type="CollisionShape2D" parent="pes"]
+position = Vector2( -0.333038, 1.04759 )
+shape = SubResource( 4 )
+
+[node name="SomJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="dano" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="colisao_dano" type="CollisionShape2D" parent="dano"]
+position = Vector2( 1.01556, 1.1722 )
+shape = SubResource( 5 )
+
+[node name="ProgressBarVida" type="ProgressBar" parent="."]
+margin_left = -18.3597
+margin_top = -34.0
+margin_right = 21.6403
+margin_bottom = -27.0
+theme = SubResource( 6 )
+custom_styles/fg = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+max_value = 3.0
+value = 3.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerVida" type="Timer" parent="."]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 17.375, 6.625 )
+[connection signal="ready" from="." to="." method="_on_Player_ready"]
+[connection signal="body_entered" from="pes" to="." method="_on_pes_body_entered"]
+[connection signal="body_entered" from="dano" to="." method="_on_dano_body_entered"]
+[connection signal="timeout" from="TimerVida" to="." method="_on_TimerVida_timeout"]

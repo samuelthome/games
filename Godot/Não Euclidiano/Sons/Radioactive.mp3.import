@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sem-título.ogg-8625dabea7422bbfda467a1b3a3c3ef0.oggstr"
+
+[deps]
+
+source_file="res://Sons/sem-título.ogg"
+dest_files=[ "res://.import/sem-título.ogg-8625dabea7422bbfda467a1b3a3c3ef0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/soccer ball.obj-6a04700575290f1dba49be6f0e423f9c.mesh"
+
+[deps]
+
+files=[ "res://.import/soccer ball.obj-6a04700575290f1dba49be6f0e423f9c.mesh" ]
+
+source_file="res://OBJ/soccer ball.obj"
+dest_files=[ "res://.import/soccer ball.obj-6a04700575290f1dba49be6f0e423f9c.mesh", "res://.import/soccer ball.obj-6a04700575290f1dba49be6f0e423f9c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

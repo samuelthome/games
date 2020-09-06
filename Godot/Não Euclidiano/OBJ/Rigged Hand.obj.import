@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Rigged Hand.obj-42c9d07c41507b333b9a5fd09d3bc653.mesh"
+
+[deps]
+
+files=[ "res://.import/Rigged Hand.obj-42c9d07c41507b333b9a5fd09d3bc653.mesh" ]
+
+source_file="res://OBJ/Rigged Hand.obj"
+dest_files=[ "res://.import/Rigged Hand.obj-42c9d07c41507b333b9a5fd09d3bc653.mesh", "res://.import/Rigged Hand.obj-42c9d07c41507b333b9a5fd09d3bc653.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

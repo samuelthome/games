@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Radioactive.ogg-29a67816290ae932be58d9c85c2b7b11.oggstr"
+
+[deps]
+
+source_file="res://Sons/Radioactive.ogg"
+dest_files=[ "res://.import/Radioactive.ogg-29a67816290ae932be58d9c85c2b7b11.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

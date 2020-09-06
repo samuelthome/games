@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://back.jpg" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 992, 576 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 777.281, 121.587 )
+scale = Vector2( 1.9375, 1.125 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -400.792, -109.741 )

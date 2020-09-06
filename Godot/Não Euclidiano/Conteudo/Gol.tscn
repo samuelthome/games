@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Conteudo/Parede.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Gol.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 0.370734, 0.646828 )
+
+[node name="Gol" type="Area"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2.24539, 0, 0, 0, 4.63862, 0, 0, 0, 0.453735, -0.40381, 0.778112, -1.46096 )
+shape = SubResource( 1 )
+
+[node name="Parede" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.14013, 2, -1.5 )
+
+[node name="Parede2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.863, 2, -1.5 )
+
+[node name="Parede3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -8.5461e-08, -4.37114e-08, 1, -1, -4.37114e-08, -8.5461e-08, 4.37114e-08, -1, -4.37114e-08, -0.369856, 5.5, -1.5 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 328.007
+margin_top = 203.645
+margin_right = 368.007
+margin_bottom = 243.645
+rect_scale = Vector2( 8.86405, 4.0493 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 6.75354
+margin_top = 14.9792
+margin_right = 87.7535
+margin_bottom = 28.9792
+rect_scale = Vector2( 0.32538, 0.715 )
+text = "Você ganhou"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_Area_body_entered"]
