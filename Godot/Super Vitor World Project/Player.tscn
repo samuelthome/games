@@ -16,6 +16,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Run",
@@ -25,11 +30,6 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -66,11 +66,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8.22296, 1.46078 )
+extents = Vector2( 9.48267, 1.83862 )
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 0.15976
-height = 22.7469
+radius = 14.4071
+height = 23.1414
 
 [sub_resource type="Theme" id=6]
 
@@ -105,18 +105,18 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="colisao_pe" type="CollisionShape2D" parent="pes"]
-position = Vector2( -0.333038, 1.04759 )
+position = Vector2( -0.175537, -0.0548422 )
 shape = SubResource( 4 )
 
 [node name="SomJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 13 )
 
 [node name="dano" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 8
 
 [node name="colisao_dano" type="CollisionShape2D" parent="dano"]
-position = Vector2( 1.01556, 1.1722 )
+position = Vector2( 1.12692, 1.1722 )
 shape = SubResource( 5 )
 
 [node name="ProgressBarVida" type="ProgressBar" parent="."]

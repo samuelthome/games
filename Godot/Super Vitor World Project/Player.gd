@@ -38,21 +38,21 @@ func _physics_process(delta):
 		motion.x = -SPEED
 		$Sprite.play("Run")
 		$Sprite.flip_h = true
-	
 	#Parou 
 	else:
 		motion.x = 0
 		$Sprite.play("Idle")
 		
-		if Input.is_action_pressed("PULAR"):
-			if is_on_floor():
-				motion.y = JUMP_FORCE
-				$SomJump.play()
+		
+		
+		
+	if Input.is_action_pressed("PULAR"):
+		if is_on_floor():
+			motion.y = JUMP_FORCE
+			$SomJump.play()	
 		else:
 			$SomJump.stop()
-		
-		$Sprite.play("Jump")
-		
+			$Sprite.play("Jump")
 		
 	motion = move_and_slide(motion, UP)
 	
@@ -78,6 +78,8 @@ func dano():
 	get_node("Anime").play("Damage")
 
 func _on_dano_body_entered(body):
+	
+	print("dano")
 	
 	#Só da o dano se sumiu a barrinha de vida 
 	if (!$ProgressBarVida.visible):
